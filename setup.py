@@ -1,15 +1,18 @@
 from setuptools import setup, find_namespace_packages
+# setuptools 是 Python 中的一个包管理工具，用于构建和发布 Python 包。
+# setup() 函数用于定义 Python 包的元数据（例如包名称、版本、作者、描述等），以及包含在包中的模块、数据文件和依赖项。
+# find_namespace_packages() 函数用于查找指定命名空间下的所有包（即以指定命名空间为前缀的包）。
 
-setup(name='nnunetv2',
-      packages=find_namespace_packages(include=["nnunetv2", "nnunetv2.*"]),
-      version='2.1.1',
-      description='nnU-Net. Framework for out-of-the box biomedical image segmentation.',
-      url='https://github.com/MIC-DKFZ/nnUNet',
-      author='Helmholtz Imaging Applied Computer Vision Lab, Division of Medical Image Computing, German Cancer Research Center',
-      author_email='f.isensee@dkfz-heidelberg.de',
-      license='Apache License Version 2.0, January 2004',
-      python_requires=">=3.9",
-      install_requires=[
+setup(name='nnunetv2', # 包的名称。
+      packages=find_namespace_packages(include=["nnunetv2", "nnunetv2.*"]), # 包含在包中的模块或包的列表。
+      version='2.1.1', # 包的版本号。
+      description='nnU-Net. Framework for out-of-the box biomedical image segmentation.', # 包的描述
+      url='https://github.com/MIC-DKFZ/nnUNet', # 包的主页。
+      author='Helmholtz Imaging Applied Computer Vision Lab, Division of Medical Image Computing, German Cancer Research Center', # 作者
+      author_email='f.isensee@dkfz-heidelberg.de', # 邮件地址
+      license='Apache License Version 2.0, January 2004', # 许可证
+      python_requires=">=3.9", # 执行python版本
+      install_requires=[ # 依赖项
           "torch>=2.0.0",
           "acvl-utils>=0.2",
           "dynamic-network-architectures>=0.2",
@@ -33,8 +36,8 @@ setup(name='nnunetv2',
           "imagecodecs",
           "yacs"
       ],
-      entry_points={
-          'console_scripts': [
+      entry_points={ # 定义在安装包后可执行的命令或脚本的字典
+          'console_scripts': [ # 工具名 = 模块名.函数名:入口函数名
               'nnUNetv2_plan_and_preprocess = nnunetv2.experiment_planning.plan_and_preprocess_entrypoints:plan_and_preprocess_entry',  # api available
               'nnUNetv2_extract_fingerprint = nnunetv2.experiment_planning.plan_and_preprocess_entrypoints:extract_fingerprint_entry',  # api available
               'nnUNetv2_plan_experiment = nnunetv2.experiment_planning.plan_and_preprocess_entrypoints:plan_experiment_entry',  # api available
@@ -58,6 +61,6 @@ setup(name='nnunetv2',
               'nnUNetv2_convert_MSD_dataset = nnunetv2.dataset_conversion.convert_MSD_dataset:entry_point'  # api available
           ],
       },
-      keywords=['deep learning', 'image segmentation', 'medical image analysis',
+      keywords=['deep learning', 'image segmentation', 'medical image analysis', # 关键词的列表，用于描述包的主题
                 'medical image segmentation', 'nnU-Net', 'nnunet']
       )
